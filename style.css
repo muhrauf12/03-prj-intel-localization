@@ -11,14 +11,18 @@ body {
   font-family: Arial, sans-serif;
   background-color: #eef6fc;
   color: #222;
-  line-height: 1.5;
 }
 
 /* --------------------------------------------------
    Header / Hero
 -------------------------------------------------- */
 .bg-intel-blue {
-  background-color: #0d3a71; /* A deeper Intel blue to match the screenshot */
+  background-color: #0d3a71; /* Matches your screenshot’s deep Intel blue */
+}
+
+.header {
+  padding: 60px 20px 40px; /* Extra top padding so timeline cards sit flush below */
+  text-align: center;
 }
 
 .header-logo {
@@ -30,33 +34,40 @@ body {
   font-size: 2.25rem;
   font-weight: 600;
   margin-bottom: 8px;
+  color: #fff;
 }
 
 .header-subtitle {
   font-size: 1rem;
   max-width: 600px;
   margin: 0 auto;
+  color: #fff;
+  line-height: 1.4;
 }
 
 /* --------------------------------------------------
-   Timeline (flex + scroll-snap)
+   Timeline Section
 -------------------------------------------------- */
 .timeline-container {
+  background-color: #fff;        /* White background behind cards */
+  padding: 24px 0;               /* Vertical padding */
+  overflow-x: auto;              /* Horizontal scroll */
+  scroll-snap-type: x mandatory;  /* Snap cards into view */
+}
+
+.timeline-inner {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 24px 16px;
-  /* No fixed width—lets it fill the viewport */
+  gap: 24px;             /* Space between cards */
+  padding: 0 24px;       /* Horizontal padding so cards don’t touch edges */
 }
 
 .timeline-card {
+  flex: 0 0 300px;                /* Fixed width of 300px per card */
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
-  flex: 0 0 280px; /* Each card is 280px wide */
   padding: 16px;
-  scroll-snap-align: start;
+  scroll-snap-align: start;      
   position: relative;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -68,17 +79,17 @@ body {
 }
 
 .card-year {
-  color: #0d3a71;
   font-size: 1.125rem;
   font-weight: 600;
+  color: #0d3a71;
   margin-bottom: 4px;
 }
 
 .card-title {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 8px;
   color: #222;
+  margin-bottom: 8px;
 }
 
 .card-image {
@@ -96,7 +107,7 @@ body {
 }
 
 .timeline-card:hover .card-details {
-  max-height: 140px;
+  max-height: 140px; /* Enough to show the paragraph */
   opacity: 1;
 }
 
@@ -111,72 +122,23 @@ body {
   text-align: center;
   color: #0d3a71;
   font-weight: 600;
-  margin: 12px 0 24px 0;
   font-size: 0.975rem;
+  margin-top: 12px;
 }
 
-/* Stack cards vertically on narrow screens */
+/* Responsive: stack cards vertically below 768px */
 @media (max-width: 768px) {
-  .timeline-container {
+  .timeline-inner {
     flex-direction: column;
-    overflow-x: visible;
     gap: 20px;
-    padding: 16px 8px;
+    padding: 0 16px;
     scroll-snap-type: none;
   }
   .timeline-card {
-    flex: 0 0 auto;
     width: 100%;
+    flex: 0 0 auto;
   }
 }
-
-/* --------------------------------------------------
-   Three-Column Section
--------------------------------------------------- */
-.bg-light-blue {
-  background-color: #e3f2fd;
-}
-
-.column-heading {
-  font-size: 1.375rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #0d3a71;
-}
-
-.column-text {
-  font-size: 0.95rem;
-  color: #333;
-  margin-bottom: 12px;
-}
-
-.learn-more-link {
-  color: #0d3a71;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 2px solid #0d3a71;
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.learn-more-link:hover,
-.learn-more-link:focus {
-  color: #041a2c;
-  border-color: #041a2c;
-}
-
-.bi {
-  font-size: 1.5rem;
-  vertical-align: middle;
-}
-
-/* Stack columns on very small screens */
-@media (max-width: 576px) {
-  .column-heading {
-    font-size: 1.25rem;
-  }
-}
-
 /* --------------------------------------------------
    FAQ Accordion (Bootstrap overrides)
 -------------------------------------------------- */
