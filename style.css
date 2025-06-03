@@ -1,0 +1,191 @@
+/* --------------------------------------------------
+   Base styles
+-------------------------------------------------- */
+
+/* Intel-inspired background and font */
+body {
+  background-color: #eef6fc;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make sure padding and border are included in width/height */
+* {
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------
+   Header / Hero
+-------------------------------------------------- */
+.bg-intel-blue {
+  background-color: #005395;
+}
+.logo {
+  width: 120px;
+}
+header h1 {
+  font-size: 2rem;
+  margin: 12px 0 8px 0;
+}
+header p {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------
+   Timeline (flex + scroll-snap)
+-------------------------------------------------- */
+.timeline-container {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 24px 16px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.timeline-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
+  flex: 0 0 280px;
+  padding: 16px;
+  position: relative;
+  scroll-snap-align: start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.timeline-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(15, 125, 194, 0.18);
+  z-index: 1;
+}
+
+.timeline-card h2 {
+  color: #08325c;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+.timeline-card h3 {
+  color: #222;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.timeline-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.timeline-card p {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Hide details until hover */
+.card-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+.timeline-card:hover .card-details {
+  max-height: 150px;
+  opacity: 1;
+}
+
+.instructions {
+  text-align: center;
+  color: #08325c;
+  font-weight: bold;
+  margin: 16px 0 24px 0;
+  font-size: 1rem;
+}
+
+/* Responsive: vertical stacking on small screens */
+@media (max-width: 700px) {
+  .timeline-container {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 20px;
+    padding: 16px 8px;
+    scroll-snap-type: none;
+  }
+  .timeline-card {
+    flex: 0 0 100%;
+  }
+}
+
+/* --------------------------------------------------
+   Three-Column Section
+-------------------------------------------------- */
+.bg-light-blue {
+  background-color: #e3f2fd;
+}
+.three-columns h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.learn-more-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #08325c;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid #08325c;
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.learn-more-link:hover,
+.learn-more-link:focus {
+  color: #041a2c;
+  border-bottom-color: #041a2c;
+}
+.bi {
+  font-size: 1.5rem;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* --------------------------------------------------
+   Accordion overrides (optional)
+-------------------------------------------------- */
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(15, 125, 194, 0.5);
+}
+
+/* --------------------------------------------------
+   Form and Button Styles
+-------------------------------------------------- */
+form label {
+  font-weight: bold;
+}
+.btn-primary {
+  background-color: #005395;
+  border: none;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #003f7f;
+}
+
+/* --------------------------------------------------
+   Footer
+-------------------------------------------------- */
+.bg-footer {
+  background-color: #f8fbff;
+}
+.footer-link {
+  color: #08325c;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.footer-link:hover,
+.footer-link:focus {
+  color: #041a2c;
+  text-decoration: underline;
+  outline: none;
+}
