@@ -43,8 +43,8 @@ body {
     scroll-snap-type: x mandatory;
 }
 
-.timeline-card, .card {
-    flex: 0 0 320px; /* wider cards for better readability */
+.timeline-card {
+    flex: 0 0 320px; /* Fixed width for cards */
     max-width: 90vw;
     min-height: 320px;
     margin: 0;
@@ -61,7 +61,7 @@ body {
     align-items: flex-start;
 }
 
-.timeline-card img, .card img {
+.timeline-card img {
     width: 92%;
     margin: 18px auto 18px auto;
     border-radius: 6px;
@@ -70,20 +70,26 @@ body {
     object-fit: cover;
 }
 
-.timeline-card .year, .card .year {
+.timeline-card .year {
     color: #174ea6;
     font-size: 1.5rem;
     font-weight: 700;
     margin: 20px 0 0 20px;
 }
 
-.timeline-card .title, .card .title {
+.timeline-card .title {
     font-size: 1.15rem;
     font-weight: 600;
     margin: 8px 0 0 20px;
 }
 
-.timeline-card .overlay, .card .overlay {
+.timeline-card .card-details {
+    font-size: 1rem;
+    color: #333;
+    margin: 10px 20px;
+}
+
+.timeline-card .overlay {
     position: absolute;
     inset: 0;
     background: rgba(23, 78, 166, 0.97);
@@ -101,9 +107,7 @@ body {
 }
 
 .timeline-card:hover .overlay,
-.timeline-card:focus-within .overlay,
-.card:hover .overlay,
-.card:focus-within .overlay {
+.timeline-card:focus-within .overlay {
     opacity: 1;
     pointer-events: auto;
 }
@@ -139,12 +143,27 @@ body {
 }
 
 @media (max-width: 600px) {
-    .timeline-card, .card {
-        flex: 0 0 85vw;
-        min-width: 240px;
-        max-width: 95vw;
+    .timeline-card {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
     }
-    .timeline-card img, .card img {
+    .timeline-card img {
         max-height: 90px;
+    }
+}
+
+@media (max-width: 700px) {
+    .timeline-scroll {
+        flex-direction: column;
+        overflow-x: visible;
+        gap: 20px;
+        padding: 16px 8px;
+        scroll-snap-type: none;
+    }
+    .timeline-card {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
     }
 }
