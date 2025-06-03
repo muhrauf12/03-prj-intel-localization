@@ -185,14 +185,14 @@ section > div {
   color: #08325c; /* Even darker blue for best contrast */
   text-decoration: none;
   font-weight: bold;
-  border-bottom: 2px solid #08325c;
+  border-bottom: 2px solid #3c536b;
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
 }
 .learn-more-link:hover,
 .learn-more-link:focus {
   color: #041a2c;
-  border-bottom: 2px solid #041a2c;
+  border-bottom: 2px solid #1d4260;
 }
 
 /* Responsive: Stack columns on small screens */
@@ -205,7 +205,7 @@ section > div {
 /* Style the instruction text at the bottom */
 body > p {
   text-align: center;
-  color: #08325c; /* Use dark blue for strong contrast */
+  color: #5391cf; /* Use dark blue for strong contrast */
   font-weight: bold;
   margin: 18px 0 28px 0;
   font-size: 1.05rem;
