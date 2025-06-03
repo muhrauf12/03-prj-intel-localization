@@ -13,8 +13,8 @@ body {
 
 /* Header / Hero */
 header {
-  background: #fff;
-  color: #1a2733;
+  background: #1985be;
+  color: #2b68a1;
   padding: 56px 0 36px 0;
   text-align: center;
   box-shadow: 0 4px 32px 0 rgba(77, 195, 255, 0.09);
@@ -24,7 +24,7 @@ header {
 header img {
   width: 120px;
   margin-bottom: 18px;
-  filter: drop-shadow(0 4px 16px #4dc3ff55);
+  filter: drop-shadow(0 4px 16px #336b8755);
 }
 
 header h1 {
@@ -39,7 +39,7 @@ header p {
   font-size: 1.22rem;
   margin: 0 auto;
   max-width: 600px;
-  color: #4dc3ff;
+  color: #c7dbe4;
   font-weight: 500;
   letter-spacing: 0.2px;
 }
