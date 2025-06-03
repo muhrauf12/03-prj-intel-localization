@@ -35,114 +35,117 @@ header p {
   margin: 0 auto;
   max-width: 500px;
 }
+/* ------------------------------
+   Timeline Cards: Overlay Version
+------------------------------- */
 
-/* Timeline section styles */
-section {
-  /* Use flexbox to arrange cards horizontally */
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto; /* Enable horizontal scroll */
-  gap: 16px; /* Space between cards */
-  padding: 24px 16px;
-  scroll-snap-type: x mandatory; /* Enable scroll snap */
-
-  /* Show exactly 4 cards at a time (4 * 280px + 3 * 16px gap = 1120px) */
-  width: 1180px;
-  max-width: 100%;
-  margin: 0 auto; /* Center the timeline on the page */
-}
-
-/* Each timeline card */
+/* Ensure each card is the positioning context */
 section > div {
+  position: relative;       /* allow absolute overlay */
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
   min-width: 260px;
   max-width: 280px;
-  flex: 0 0 auto; /* Prevent shrinking/growing */
-  padding: 18px 14px 18px 14px;
-  scroll-snap-align: start; /* Snap to start of card */
+  flex: 0 0 auto;
+  padding: 0;               /* remove the old padding */
+  overflow: hidden;         /* clip the overlay when hidden */
+  scroll-snap-align: start;
   transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
 }
 
-/* Card hover effect for interactivity */
+/* Keep the card lift on hover */
 section > div:hover {
-  /* Slightly lift and highlight the card */
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 6px 20px rgba(15, 125, 194, 0.18);
   z-index: 1;
 }
 
-/* Card headings */
-section h2 {
-  color: #08325c; /* Much darker blue for strong contrast */
-  margin: 0 0 4px 0;
-  font-size: 1.2rem;
-}
-
-section h3 {
-  margin: 0 0 8px 0;
-  font-size: 1rem;
-  color: #222;
-}
-
-/* Card images */
+/* Move image into its own class so we can zero-out padding */
 section img {
+  display: block;
   width: 100%;
-  border-radius: 8px;
-  margin: 8px 0 10px 0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-/* Card text */
-section p {
-  font-size: 0.98rem;
-  color: #333;
+/* Style for the top text (year + title) inside each card */
+section h2,
+section h3 {
+  position: absolute;
+  left: 16px;
+  z-index: 2;
+  color: #08325c;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   margin: 0;
 }
 
-/* Hide card details by default, show on hover */
-/* We use max-height and opacity for a smooth transition */
+section h2 {
+  top: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+section h3 {
+  top: 36px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+}
+
+/* Now make the .card-details fill the entire card as an overlay */
 .card-details {
-  max-height: 0;
-  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* semi-opaque black */
+  color: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  border-radius: 12px; /* match the card’s corners */
+  pointer-events: none; /* so clicks “pass through” when hidden */
 }
 
-/* When the card is hovered, show the details */
+/* Fade in the overlay on hover */
 section > div:hover .card-details {
-  max-height: 200px; /* Enough to show the text */
   opacity: 1;
+  pointer-events: auto; /* allow hover/click events if you need them */
 }
 
-/* Make sure padding and borders are included in width calculations */
-* {
-  box-sizing: border-box;
+/* Style for the overlay paragraph */
+.card-details p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
 }
 
-/* Improve focus visibility for accessibility */
-a:focus,
-.btn:focus,
-input:focus {
-  outline: 2px solid #0f7dc2;
-  outline-offset: 2px;
+/* Remove old padding from the card’s container so the overlay sits flush */
+section > div > img {
+  margin-bottom: 0;
 }
 
-/* Responsive: Stack cards vertically on small screens */
-@media (max-width: 1200px) {
-  section {
-    width: 100%;
-    max-width: 100%;
-  }
+/* Adjust the card’s bottom padding (so image is flush and overlay covers everything) */
+section > div {
+  padding-bottom: 0;
 }
 
+/* If you want a little “peek” of the image below the overlay, you can add: */
+/* section img { margin-bottom: 8px; }  but generally zero-out it so the overlay covers exactly. */
+
+/* Keep responsive stacking unchanged */
 @media (max-width: 700px) {
   section {
     flex-direction: column;
     overflow-x: visible;
     gap: 20px;
-    padding: 16px 8px; /* Add horizontal padding so cards don't touch the edge */
+    padding: 16px 8px;
     scroll-snap-type: none;
     width: 100%;
     max-width: 100%;
