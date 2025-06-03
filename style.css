@@ -1,127 +1,268 @@
-/* Add your CSS here */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* Set a simple Intel-inspired background color and font for the whole page */
+/* Base styles */
 body {
-  /* Light blue background for Intel branding */
-  background-color: #e6f0fa;
-  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e6f0fa 0%, #f4f8fc 100%);
+  font-family: 'Inter', Arial, sans-serif;
   margin: 0;
   padding: 0;
+  color: #1a2636;
 }
 
-/* Style the header/hero section */
+/* Header */
 header {
-  background-color: #005495; /* Darker Intel blue for better contrast */
+  background: linear-gradient(90deg, #005495 60%, #0f7dc2 100%);
   color: #fff;
-  padding: 32px 0 24px 0;
+  padding: 40px 0 28px 0;
   text-align: center;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 12px rgba(0, 84, 149, 0.08);
 }
 
-/* Style the Intel logo */
 header img {
-  width: 120px;
-  margin-bottom: 12px;
+  width: 110px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 8px #0f7dc2aa);
 }
 
-/* Main heading style */
 header h1 {
-  font-size: 2rem;
-  margin: 0 0 12px 0;
+  font-size: 2.2rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
-/* Subheading/description style */
 header p {
-  font-size: 1.1rem;
+  font-size: 1.13rem;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 520px;
+  opacity: 0.95;
 }
 
-/* Timeline section styles */
+/* Timeline Section */
 section {
-  /* Use flexbox to arrange cards horizontally */
   display: flex;
   flex-direction: row;
-  overflow-x: auto; /* Enable horizontal scroll */
-  gap: 16px; /* Space between cards */
-  padding: 24px 16px;
-  scroll-snap-type: x mandatory; /* Enable scroll snap */
-
-  /* Show exactly 4 cards at a time (4 * 280px + 3 * 16px gap = 1120px) */
-  width: 1180px;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 36px 18px 32px 18px;
+  scroll-snap-type: x mandatory;
+  width: 1240px;
   max-width: 100%;
-  margin: 0 auto; /* Center the timeline on the page */
+  margin: 0 auto;
+  background: linear-gradient(90deg, #eaf3fb 60%, #f8fbff 100%);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 4px 24px rgba(15, 125, 194, 0.06);
 }
 
-/* Each timeline card */
+/* Timeline Cards */
 section > div {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
+  background: #f7fafd;
+  border-radius: 0; /* Square corners */
+  border: 1.5px solid #dbeafe;
+  box-shadow: 0 2px 12px rgba(15, 125, 194, 0.07);
   min-width: 260px;
   max-width: 280px;
-  flex: 0 0 auto; /* Prevent shrinking/growing */
-  padding: 18px 14px 18px 14px;
-  scroll-snap-align: start; /* Snap to start of card */
-  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 0 0 auto;
+  padding: 22px 16px 20px 16px;
+  scroll-snap-align: start;
+  transition: 
+    transform 0.18s cubic-bezier(.4,1.2,.6,1),
+    box-shadow 0.18s,
+    border-left 0.18s;
   position: relative;
+  border-left: 4px solid transparent;
 }
 
-/* Card hover effect for interactivity */
 section > div:hover {
-  /* Slightly lift and highlight the card */
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 6px 20px rgba(15, 125, 194, 0.18);
-  z-index: 1;
+  transform: scale(1.035) translateY(-6px);
+  box-shadow: 0 8px 28px rgba(15, 125, 194, 0.16);
+  border-left: 4px solid #0f7dc2;
+  z-index: 2;
 }
 
 /* Card headings */
 section h2 {
-  color: #08325c; /* Much darker blue for strong contrast */
-  margin: 0 0 4px 0;
-  font-size: 1.2rem;
+  color: #0f7dc2;
+  margin: 0 0 2px 0;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 section h3 {
-  margin: 0 0 8px 0;
-  font-size: 1rem;
-  color: #222;
+  margin: 0 0 10px 0;
+  font-size: 1.01rem;
+  color: #1a2636;
+  font-weight: 600;
 }
 
 /* Card images */
 section img {
   width: 100%;
-  border-radius: 8px;
-  margin: 8px 0 10px 0;
+  border-radius: 0;
+  margin: 10px 0 14px 0;
+  box-shadow: 0 1px 8px #dbeafe55;
 }
 
 /* Card text */
 section p {
-  font-size: 0.98rem;
-  color: #333;
+  font-size: 0.99rem;
+  color: #2a3a4d;
   margin: 0;
+  line-height: 1.5;
 }
 
-/* Hide card details by default, show on hover */
-/* We use max-height and opacity for a smooth transition */
+/* Card details reveal */
 .card-details {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: max-height 0.3s cubic-bezier(.4,1.2,.6,1), opacity 0.3s;
 }
 
-/* When the card is hovered, show the details */
 section > div:hover .card-details {
-  max-height: 200px; /* Enough to show the text */
+  max-height: 220px;
   opacity: 1;
 }
 
-/* Make sure padding and borders are included in width calculations */
-* {
-  box-sizing: border-box;
+/* Instruction text */
+body > p {
+  text-align: center;
+  color: #0f7dc2;
+  font-weight: 600;
+  margin: 22px 0 32px 0;
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
 }
 
-/* Improve focus visibility for accessibility */
+/* Three Column Section */
+.three-columns {
+  background: #e3f2fd;
+  padding: 48px 0 48px 0;
+  width: 100%;
+}
+
+.three-columns .container {
+  max-width: 1100px;
+}
+
+.three-columns .row > div {
+  background: #f7fafd;
+  border-radius: 0;
+  border: 1.5px solid #dbeafe;
+  box-shadow: 0 2px 12px rgba(15, 125, 194, 0.07);
+  padding: 32px 22px 28px 22px;
+  margin-bottom: 18px;
+  transition: box-shadow 0.18s, border-left 0.18s;
+  border-left: 4px solid transparent;
+}
+
+.three-columns .row > div:hover {
+  box-shadow: 0 8px 28px rgba(15, 125, 194, 0.13);
+  border-left: 4px solid #0f7dc2;
+}
+
+.three-columns .bi {
+  font-size: 1.6em;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.three-columns h2 {
+  color: #0f7dc2;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Learn More link */
+.learn-more-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #0f7dc2;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 2px solid #0f7dc2;
+  padding: 6px 18px;
+  background: #e6f0fa;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  font-size: 1rem;
+}
+.learn-more-link:hover,
+.learn-more-link:focus {
+  background: #0f7dc2;
+  color: #fff;
+  border-color: #08325c;
+}
+
+/* FAQ Accordion */
+.accordion-button {
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 600;
+  color: #0f7dc2;
+  background: #f7fafd;
+  border-radius: 0 !important;
+}
+.accordion-button:not(.collapsed) {
+  background: #e6f0fa;
+  color: #08325c;
+}
+.accordion-body {
+  background: #f7fafd;
+  color: #1a2636;
+  border-radius: 0 0 0 0;
+}
+
+/* Subscription Form */
+form .form-control {
+  border-radius: 0;
+  border: 1.5px solid #dbeafe;
+  background: #f7fafd;
+  font-family: 'Inter', Arial, sans-serif;
+}
+form .form-control:focus {
+  border-color: #0f7dc2;
+  box-shadow: 0 0 0 2px #e6f0fa;
+}
+form .btn-primary {
+  border-radius: 999px;
+  background: #0f7dc2;
+  border: none;
+  font-weight: 700;
+  padding: 10px 32px;
+  font-size: 1.08rem;
+  transition: background 0.18s;
+}
+form .btn-primary:hover,
+form .btn-primary:focus {
+  background: #08325c;
+}
+
+/* Footer */
+footer {
+  background: #0f223a;
+  color: #fff;
+  border-top: 3px solid #0f7dc2;
+  margin-top: 48px;
+  font-size: 1rem;
+}
+footer a {
+  color: #7ec3f7;
+  text-decoration: underline;
+  font-weight: 600;
+  margin: 0 4px;
+  transition: color 0.18s;
+}
+footer a:hover,
+footer a:focus {
+  color: #fff;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Accessibility focus */
 a:focus,
 .btn:focus,
 input:focus {
@@ -129,7 +270,7 @@ input:focus {
   outline-offset: 2px;
 }
 
-/* Responsive: Stack cards vertically on small screens */
+/* Responsive: Timeline */
 @media (max-width: 1200px) {
   section {
     width: 100%;
@@ -137,90 +278,43 @@ input:focus {
   }
 }
 
+@media (max-width: 900px) {
+  section {
+    gap: 14px;
+    padding: 24px 6px;
+  }
+  .three-columns .container {
+    max-width: 98vw;
+  }
+}
+
 @media (max-width: 700px) {
   section {
     flex-direction: column;
     overflow-x: visible;
-    gap: 20px;
-    padding: 16px 8px; /* Add horizontal padding so cards don't touch the edge */
+    gap: 22px;
+    padding: 14px 4px;
     scroll-snap-type: none;
     width: 100%;
     max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
   }
   section > div {
     max-width: 100%;
     min-width: 0;
     width: 100%;
   }
-}
-
-/* --- Three Column Section Styles --- */
-/* This section is NOT affected by the timeline styles above */
-.three-columns {
-  background: #e3f2fd; /* Slightly darker blue for better contrast */
-  padding: 40px 0 40px 0;
-  width: 100%;
-}
-
-/* Style the icons in the headings */
-.three-columns .bi {
-  font-size: 1.5em;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-/* Improve heading color contrast in three-columns */
-.three-columns h2 {
-  color: #08325c; /* Match timeline year color for consistency and contrast */
-}
-
-/* Style the "Learn More" links with higher contrast */
-.learn-more-link {
-  display: inline-block;
-  margin-top: 10px;
-  color: #08325c; /* Even darker blue for best contrast */
-  text-decoration: none;
-  font-weight: bold;
-  border-bottom: 2px solid #08325c;
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
-}
-.learn-more-link:hover,
-.learn-more-link:focus {
-  color: #041a2c;
-  border-bottom: 2px solid #041a2c;
-}
-
-/* Responsive: Stack columns on small screens */
-@media (max-width: 768px) {
   .three-columns {
-    padding: 24px 0;
+    padding: 22px 0;
+  }
+  .three-columns .row > div {
+    padding: 20px 10px 18px 10px;
   }
 }
 
-/* Style the instruction text at the bottom */
-body > p {
-  text-align: center;
-  color: #08325c; /* Use dark blue for strong contrast */
-  font-weight: bold;
-  margin: 18px 0 28px 0;
-  font-size: 1.05rem;
-}
-
-/* Footer link styles for better contrast */
-footer {
-  background: #f8fbff;
-}
-
-footer a {
-  color: #08325c; /* Dark blue for high contrast */
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-footer a:hover,
-footer a:focus {
-  color: #041a2c;
-  text-decoration: underline;
-  outline: none;
+/* Box sizing */
+* {
+  box-sizing: border-box;
 }
