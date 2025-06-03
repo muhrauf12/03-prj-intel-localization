@@ -1,0 +1,144 @@
+/* General page styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f6f6f6;
+    color: #222;
+}
+
+.header {
+    background: linear-gradient(135deg, #0071c5 0%, #005fa3 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px 40px 20px;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+.header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+.header p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 40px 0 20px 0;
+    background: #f6f6f6;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    width: 240px;
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.card .year {
+    color: #174ea6;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 20px 0 0 20px;
+}
+
+.card .title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 8px 0 0 20px;
+}
+
+.card img {
+    width: 90%;
+    margin: 18px auto 18px auto;
+    border-radius: 4px;
+    display: block;
+}
+
+.card .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(23, 78, 166, 0.97);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    padding: 24px;
+    font-size: 1.05rem;
+    text-align: left;
+    z-index: 2;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Hide overlay by default except on hover */
+.card .overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Show overlay on hover */
+.card:hover .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Footer text */
+.footer {
+    text-align: center;
+    color: #888;
+    font-size: 1rem;
+    margin: 18px 0 0 0;
+}
+
+/* Specific card styles for 8086 Processor */
+.card-8086 {
+    background: #e8f4fd;
+    border-left: 4px solid #0071c5;
+}
+
+.card-8086 .year {
+    color: #005fa3;
+}
+
+.card-8086 .title {
+    color: #333;
+}
+
+.card-8086 img {
+    border: 2px solid #0071c5;
+}
+
+.card-8086 .overlay {
+    background: rgba(0, 113, 197, 0.9);
+}
