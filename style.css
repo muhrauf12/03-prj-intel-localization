@@ -1,104 +1,108 @@
-/* --------------------------------------------------
-   Base / Reset
--------------------------------------------------- */
-* {
-  box-sizing: border-box;
+/* Add your CSS here */
+
+/* Set a simple Intel-inspired background color and font for the whole page */
+body {
+  /* Light blue background for Intel branding */
+  background-color: #e6f0fa;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #eef6fc;
-  color: #222;
-}
-
-/* --------------------------------------------------
-   Header / Hero
--------------------------------------------------- */
-.bg-intel-blue {
-  background-color: #0d3a71; /* Matches your screenshot’s deep Intel blue */
-}
-
-.header {
-  padding: 60px 20px 40px; /* Extra top padding so timeline cards sit flush below */
+/* Style the header/hero section */
+header {
+  background-color: #005495; /* Darker Intel blue for better contrast */
+  color: #fff;
+  padding: 32px 0 24px 0;
   text-align: center;
 }
 
-.header-logo {
+/* Style the Intel logo */
+header img {
   width: 120px;
-  height: auto;
+  margin-bottom: 12px;
 }
 
-.header-title {
-  font-size: 2.25rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #fff;
+/* Main heading style */
+header h1 {
+  font-size: 2rem;
+  margin: 0 0 12px 0;
 }
 
-.header-subtitle {
-  font-size: 1rem;
-  max-width: 600px;
+/* Subheading/description style */
+header p {
+  font-size: 1.1rem;
   margin: 0 auto;
-  color: #fff;
-  line-height: 1.4;
+  max-width: 500px;
 }
 
-/* --------------------------------------------------
-   Timeline Section
--------------------------------------------------- */
-.timeline-container {
-  background-color: #fff;        /* White background behind cards */
-  padding: 24px 0;               /* Vertical padding */
-  overflow-x: auto;              /* Horizontal scroll */
-  scroll-snap-type: x mandatory;  /* Snap cards into view */
-}
-
-.timeline-inner {
+/* Timeline section styles */
+section {
+  /* Use flexbox to arrange cards horizontally */
   display: flex;
-  gap: 24px;             /* Space between cards */
-  padding: 0 24px;       /* Horizontal padding so cards don’t touch edges */
+  flex-direction: row;
+  overflow-x: auto; /* Enable horizontal scroll */
+  gap: 16px; /* Space between cards */
+  padding: 24px 16px;
+  scroll-snap-type: x mandatory; /* Enable scroll snap */
+
+  /* Show exactly 4 cards at a time (4 * 280px + 3 * 16px gap = 1120px) */
+  width: 1180px;
+  max-width: 100%;
+  margin: 0 auto; /* Center the timeline on the page */
 }
 
-.timeline-card {
-  flex: 0 0 300px;                /* Fixed width of 300px per card */
-  background-color: #fff;
+/* Each timeline card */
+section > div {
+  background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
-  padding: 16px;
-  scroll-snap-align: start;      
-  position: relative;
+  min-width: 260px;
+  max-width: 280px;
+  flex: 0 0 auto; /* Prevent shrinking/growing */
+  padding: 18px 14px 18px 14px;
+  scroll-snap-align: start; /* Snap to start of card */
   transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
-.timeline-card:hover {
-  transform: translateY(-6px) scale(1.02);
+/* Card hover effect for interactivity */
+section > div:hover {
+  /* Slightly lift and highlight the card */
+  transform: translateY(-8px) scale(1.03);
   box-shadow: 0 6px 20px rgba(15, 125, 194, 0.18);
   z-index: 1;
 }
 
-.card-year {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #0d3a71;
-  margin-bottom: 4px;
+/* Card headings */
+section h2 {
+  color: #08325c; /* Much darker blue for strong contrast */
+  margin: 0 0 4px 0;
+  font-size: 1.2rem;
 }
 
-.card-title {
+section h3 {
+  margin: 0 0 8px 0;
   font-size: 1rem;
-  font-weight: 500;
   color: #222;
-  margin-bottom: 8px;
 }
 
-.card-image {
+/* Card images */
+section img {
   width: 100%;
   border-radius: 8px;
-  margin-bottom: 10px;
-  display: block;
+  margin: 8px 0 10px 0;
 }
 
+/* Card text */
+section p {
+  font-size: 0.98rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Hide card details by default, show on hover */
+/* We use max-height and opacity for a smooth transition */
 .card-details {
   max-height: 0;
   overflow: hidden;
@@ -106,90 +110,117 @@ body {
   transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
-.timeline-card:hover .card-details {
-  max-height: 140px; /* Enough to show the paragraph */
+/* When the card is hovered, show the details */
+section > div:hover .card-details {
+  max-height: 200px; /* Enough to show the text */
   opacity: 1;
 }
 
-.card-details p {
-  font-size: 0.94rem;
-  color: #333;
-  margin-top: 8px;
+/* Make sure padding and borders are included in width calculations */
+* {
+  box-sizing: border-box;
 }
 
-/* Instruction text under timeline */
-.instructions {
-  text-align: center;
-  color: #0d3a71;
-  font-weight: 600;
-  font-size: 0.975rem;
-  margin-top: 12px;
-}
-
-/* Responsive: stack cards vertically below 768px */
-@media (max-width: 768px) {
-  .timeline-inner {
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 16px;
-    scroll-snap-type: none;
-  }
-  .timeline-card {
-    width: 100%;
-    flex: 0 0 auto;
-  }
-}
-/* --------------------------------------------------
-   FAQ Accordion (Bootstrap overrides)
--------------------------------------------------- */
-.accordion-button:focus {
-  box-shadow: 0 0 0 0.25rem rgba(15, 125, 194, 0.5);
-}
-
-/* --------------------------------------------------
-   Form / Buttons
--------------------------------------------------- */
-.form-label {
-  font-weight: 600;
-}
-
-.btn-primary {
-  background-color: #0d3a71;
-  border: none;
-  font-weight: 600;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #041a2c;
-}
-
-/* --------------------------------------------------
-   Footer
--------------------------------------------------- */
-.bg-footer {
-  background-color: #f8fbff;
-}
-
-.footer-link {
-  color: #0d3a71;
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-.footer-link:hover,
-.footer-link:focus {
-  color: #041a2c;
-  text-decoration: underline;
-  outline: none;
-}
-
-/* Accessibility: ensure focus states for all interactive elements */
+/* Improve focus visibility for accessibility */
 a:focus,
-button:focus,
-input:focus,
-textarea:focus {
+.btn:focus,
+input:focus {
   outline: 2px solid #0f7dc2;
   outline-offset: 2px;
 }
 
+/* Responsive: Stack cards vertically on small screens */
+@media (max-width: 1200px) {
+  section {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  section {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 20px;
+    padding: 16px 8px; /* Add horizontal padding so cards don't touch the edge */
+    scroll-snap-type: none;
+    width: 100%;
+    max-width: 100%;
+  }
+  section > div {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* --- Three Column Section Styles --- */
+/* This section is NOT affected by the timeline styles above */
+.three-columns {
+  background: #e3f2fd; /* Slightly darker blue for better contrast */
+  padding: 40px 0 40px 0;
+  width: 100%;
+}
+
+/* Style the icons in the headings */
+.three-columns .bi {
+  font-size: 1.5em;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Improve heading color contrast in three-columns */
+.three-columns h2 {
+  color: #08325c; /* Match timeline year color for consistency and contrast */
+}
+
+/* Style the "Learn More" links with higher contrast */
+.learn-more-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #08325c; /* Even darker blue for best contrast */
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid #08325c;
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.learn-more-link:hover,
+.learn-more-link:focus {
+  color: #041a2c;
+  border-bottom: 2px solid #041a2c;
+}
+
+/* Responsive: Stack columns on small screens */
+@media (max-width: 768px) {
+  .three-columns {
+    padding: 24px 0;
+  }
+}
+
+/* Style the instruction text at the bottom */
+body > p {
+  text-align: center;
+  color: #08325c; /* Use dark blue for strong contrast */
+  font-weight: bold;
+  margin: 18px 0 28px 0;
+  font-size: 1.05rem;
+}
+
+/* Footer link styles for better contrast */
+footer {
+  background: #f8fbff;
+}
+
+footer a {
+  color: #08325c; /* Dark blue for high contrast */
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+footer a:hover,
+footer a:focus {
+  color: #041a2c;
+  text-decoration: underline;
+  outline: none;
+}
