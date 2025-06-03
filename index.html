@@ -64,7 +64,7 @@
       transition: opacity 0.3s;
       padding: 24px;
       font-size: 1.05rem;
-      text-align: left;
+      text-align: start;
       z-index: 2;
     }
     .timeline-card:hover .overlay,
@@ -85,14 +85,15 @@
       font-size: 1.4rem;
       font-weight: 700;
       margin: 20px 0 0 20px;
+      text-align: start;
     }
     .timeline-card .title {
       font-size: 1.1rem;
       font-weight: 600;
       margin: 8px 0 0 20px;
+      text-align: start;
     }
     .timeline-caption {
-      text-align: center;
       color: #888;
       font-size: 1rem;
       margin: 18px 0 0 0;
@@ -118,8 +119,8 @@
     <!-- Hero/Header -->
     <div class="hero-bg">
       <img src="img/intel-header-logo.svg" alt="Intel Logo" style="height: 48px;">
-      <h1>Sustainability<br>Through the Ages</h1>
-      <p>
+      <h1 class="text-start">Sustainability<br>Through the Ages</h1>
+      <p class="text-start">
         Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.
       </p>
     </div>
@@ -130,10 +131,10 @@
         <!-- Card 1 -->
         <div class="col-12 col-md-6 col-lg-3">
           <div class="timeline-card h-100">
-            <div class="year">1968</div>
-            <div class="title">Intel Founded</div>
+            <div class="year text-start">1968</div>
+            <div class="title text-start">Intel Founded</div>
             <img src="img/1.jpg" alt="Intel founders in 1968">
-            <div class="overlay">
+            <div class="overlay text-start">
               Intel is founded, marking the beginning of a journey in semiconductor innovation.
             </div>
           </div>
@@ -141,10 +142,10 @@
         <!-- Card 2 -->
         <div class="col-12 col-md-6 col-lg-3">
           <div class="timeline-card h-100">
-            <div class="year">1978</div>
-            <div class="title">8086 Processor</div>
+            <div class="year text-start">1978</div>
+            <div class="title text-start">8086 Processor</div>
             <img src="img/3.jpg" alt="Intel 8086 Processor">
-            <div class="overlay">
+            <div class="overlay text-start">
               Intel launches the 8086 processor, establishing the x86 architecture for modern computing.
             </div>
           </div>
@@ -152,10 +153,10 @@
         <!-- Card 3 -->
         <div class="col-12 col-md-6 col-lg-3">
           <div class="timeline-card h-100">
-            <div class="year">1985</div>
-            <div class="title">386 Processor</div>
+            <div class="year text-start">1985</div>
+            <div class="title text-start">386 Processor</div>
             <img src="img/4.jpg" alt="Intel 386 Processor">
-            <div class="overlay">
+            <div class="overlay text-start">
               Intel introduces the 386 processor with 32-bit architecture, ushering in a new era of performance and multitasking.
             </div>
           </div>
@@ -163,59 +164,59 @@
         <!-- Card 4 (info overlay by default for demo) -->
         <div class="col-12 col-md-6 col-lg-3">
           <div class="timeline-card h-100">
-            <div class="year">1971</div>
-            <div class="title">First Microprocessor</div>
+            <div class="year text-start">1971</div>
+            <div class="title text-start">First Microprocessor</div>
             <img src="img/2.jpg" alt="Intel 4004 Microprocessor">
-            <div class="overlay" style="opacity:1;pointer-events:auto;">
+            <div class="overlay text-start" style="opacity:1;pointer-events:auto;">
               Intel debuts the 4004, the world's first commercial microprocessor, igniting the microprocessor revolution.
             </div>
           </div>
         </div>
       </div>
-      <div class="timeline-caption">
+      <div class="timeline-caption text-center text-md-start">
         Scroll to view timeline | Hover over cards to learn more!
       </div>
     </div>
 
     <!-- Three-Column Info Section -->
     <div class="container info-section py-5">
-      <div class="row text-center g-4">
+      <div class="row g-4">
         <!-- Column 1 -->
         <div class="col-12 col-md-4">
-          <div class="mb-3">
+          <div class="mb-3 text-center text-md-start">
             <i class="bi bi-bar-chart-line fs-1 text-primary" aria-hidden="true"></i>
           </div>
-          <h5 class="fw-bold">RISE Strategy</h5>
-          <p>
+          <h5 class="fw-bold text-center text-md-start">RISE Strategy</h5>
+          <p class="text-center text-md-start">
             Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, Intel sets ambitious 2030 goals, including driving industry-wide progress on climate action, water stewardship, and waste reduction.
           </p>
-          <a href="#" class="btn btn-outline-primary btn-sm" aria-label="Learn more about RISE Strategy">
+          <a href="#" class="btn btn-outline-primary btn-sm text-center text-md-start" aria-label="Learn more about RISE Strategy">
             <i class="bi bi-arrow-left-circle"></i> Learn More
           </a>
         </div>
         <!-- Column 2 -->
         <div class="col-12 col-md-4">
-          <div class="mb-3">
+          <div class="mb-3 text-center text-md-start">
             <i class="bi bi-globe2 fs-1 text-primary" aria-hidden="true"></i>
           </div>
-          <h5 class="fw-bold">Commitment</h5>
-          <p>
+          <h5 class="fw-bold text-center text-md-start">Commitment</h5>
+          <p class="text-center text-md-start">
             In 2022, Intel pledged to achieve net-zero greenhouse gas emissions (Scope 1 and 2) by 2040. This commitment builds on decades of environmental initiatives and partnerships across the semiconductor industry.
           </p>
-          <a href="#" class="btn btn-outline-primary btn-sm" aria-label="Learn more about Commitment">
+          <a href="#" class="btn btn-outline-primary btn-sm text-center text-md-start" aria-label="Learn more about Commitment">
             <i class="bi bi-arrow-left-circle"></i> Learn More
           </a>
         </div>
         <!-- Column 3 -->
         <div class="col-12 col-md-4">
-          <div class="mb-3">
+          <div class="mb-3 text-center text-md-start">
             <i class="bi bi-droplet-half fs-1 text-primary" aria-hidden="true"></i>
           </div>
-          <h5 class="fw-bold">Water &amp; Waste</h5>
-          <p>
+          <h5 class="fw-bold text-center text-md-start">Water &amp; Waste</h5>
+          <p class="text-center text-md-start">
             Intel conserves billions of gallons of water annually and collaborates with local communities to restore watersheds. Intel also upcycles and recycles materials to reduce waste and advance a circular economy.
           </p>
-          <a href="#" class="btn btn-outline-primary btn-sm" aria-label="Learn more about Water and Waste">
+          <a href="#" class="btn btn-outline-primary btn-sm text-center text-md-start" aria-label="Learn more about Water and Waste">
             <i class="bi bi-arrow-left-circle"></i> Learn More
           </a>
         </div>
