@@ -17,14 +17,14 @@ header {
   color: #2b68a1;
   padding: 56px 0 36px 0;
   text-align: center;
-  box-shadow: 0 4px 32px 0 rgba(77, 195, 255, 0.09);
+  box-shadow: 0 4px 32px 0 rgba(71, 130, 160, 0.09);
   border-bottom: 3px solid #4dc3ff;
 }
 
 header img {
   width: 120px;
   margin-bottom: 18px;
-  filter: drop-shadow(0 4px 16px #336b8755);
+  filter: drop-shadow(0 4px 16px #2d81ab55);
 }
 
 header h1 {
@@ -39,7 +39,7 @@ header p {
   font-size: 1.22rem;
   margin: 0 auto;
   max-width: 600px;
-  color: #c7dbe4;
+  color: #36677e;
   font-weight: 500;
   letter-spacing: 0.2px;
 }
