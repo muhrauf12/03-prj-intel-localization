@@ -13,14 +13,14 @@ body {
 header {
   background-color: #005495; /* Darker Intel blue for better contrast */
   color: #fff;
-  padding: 32px 0 24px 0;
+  padding: 37px 0 27px 0;
   text-align: center;
 }
 
 /* Style the Intel logo */
 header img {
-  width: 120px;
-  margin-bottom: 12px;
+  width: 140px;
+  margin-bottom: 13px;
 }
 
 /* Main heading style */
@@ -33,7 +33,7 @@ header h1 {
 header p {
   font-size: 1.1rem;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 600px;
 }
 /* ------------------------------
    Timeline Cards: Overlay Version
@@ -43,7 +43,7 @@ header p {
 section > div {
   position: relative;
   background: white;
-  border-radius: 12px;
+  border-radius: 13px;
   box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
   min-width: 260px;
   max-width: 280px;
