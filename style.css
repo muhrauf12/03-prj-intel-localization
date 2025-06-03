@@ -1,135 +1,126 @@
-/* Add your CSS here */
+/* --- Modern Intel-Inspired Redesign --- */
 
-/* Set a simple Intel-inspired background color and font for the whole page */
+/* Base styles */
 body {
-  /* Light blue background for Intel branding */
-  background-color: #e6f0fa;
-  font-family: Arial, sans-serif;
+  background: #f4f8fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 0;
+  color: #1a2733;
 }
 
-/* Style the header/hero section */
+/* Header / Hero */
 header {
-  background-color: #005495; /* Darker Intel blue for better contrast */
+  background: linear-gradient(90deg, #3fa7f3 0%, #005495 100%);
   color: #fff;
-  padding: 32px 0 24px 0;
+  padding: 40px 0 28px 0;
   text-align: center;
+  box-shadow: 0 2px 12px rgba(63, 167, 243, 0.08);
 }
 
-/* Style the Intel logo */
 header img {
-  width: 120px;
-  margin-bottom: 12px;
+  width: 110px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 8px #3fa7f3aa);
 }
 
-/* Main heading style */
 header h1 {
-  font-size: 2rem;
-  margin: 0 0 12px 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.5px;
 }
 
-/* Subheading/description style */
 header p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 540px;
+  color: #eaf6ff;
+  font-weight: 400;
 }
 
-/* Timeline section styles */
+/* Timeline Section */
 section {
-  /* Use flexbox to arrange cards horizontally */
   display: flex;
   flex-direction: row;
-  overflow-x: auto; /* Enable horizontal scroll */
-  gap: 16px; /* Space between cards */
-  padding: 24px 16px;
-  scroll-snap-type: x mandatory; /* Enable scroll snap */
-
-  /* Show exactly 4 cards at a time (4 * 280px + 3 * 16px gap = 1120px) */
-  width: 1180px;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 32px 20px;
+  scroll-snap-type: x mandatory;
+  width: 1240px;
   max-width: 100%;
-  margin: 0 auto; /* Center the timeline on the page */
+  margin: 0 auto;
+  background: none;
 }
 
-/* Each timeline card */
+/* Timeline Cards */
 section > div {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
+  background: #f7fafc;
+  border-radius: 0; /* Square corners */
+  border: 1.5px solid #e0e7ef;
+  box-shadow: 0 4px 18px 0 rgba(63, 167, 243, 0.09);
   min-width: 260px;
-  max-width: 280px;
-  flex: 0 0 auto; /* Prevent shrinking/growing */
-  padding: 18px 14px 18px 14px;
-  scroll-snap-align: start; /* Snap to start of card */
-  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 290px;
+  flex: 0 0 auto;
+  padding: 22px 16px 22px 16px;
+  scroll-snap-align: start;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
   position: relative;
 }
 
-/* Card hover effect for interactivity */
 section > div:hover {
-  /* Slightly lift and highlight the card */
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 6px 20px rgba(15, 125, 194, 0.18);
-  z-index: 1;
+  transform: translateY(-6px) scale(1.025);
+  box-shadow: 0 8px 28px 0 rgba(63, 167, 243, 0.18);
+  border-color: #3fa7f3;
+  z-index: 2;
 }
 
-/* Card headings */
+/* Card Headings */
 section h2 {
-  color: #08325c; /* Much darker blue for strong contrast */
-  margin: 0 0 4px 0;
-  font-size: 1.2rem;
+  color: #3fa7f3;
+  margin: 0 0 2px 0;
+  font-size: 1.22rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 section h3 {
-  margin: 0 0 8px 0;
-  font-size: 1rem;
-  color: #222;
+  margin: 0 0 10px 0;
+  font-size: 1.04rem;
+  color: #1a2733;
+  font-weight: 600;
 }
 
-/* Card images */
+/* Card Images */
 section img {
   width: 100%;
-  border-radius: 8px;
-  margin: 8px 0 10px 0;
+  border-radius: 0;
+  margin: 10px 0 14px 0;
+  box-shadow: 0 2px 10px rgba(63, 167, 243, 0.07);
 }
 
-/* Card text */
+/* Card Text */
 section p {
-  font-size: 0.98rem;
-  color: #333;
+  font-size: 1.01rem;
+  color: #2b3d4f;
   margin: 0;
+  line-height: 1.5;
 }
 
-/* Hide card details by default, show on hover */
-/* We use max-height and opacity for a smooth transition */
+/* Card Details Reveal */
 .card-details {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: max-height 0.28s cubic-bezier(.4,0,.2,1), opacity 0.28s;
 }
 
-/* When the card is hovered, show the details */
 section > div:hover .card-details {
-  max-height: 200px; /* Enough to show the text */
+  max-height: 220px;
   opacity: 1;
 }
 
-/* Make sure padding and borders are included in width calculations */
-* {
-  box-sizing: border-box;
-}
-
-/* Improve focus visibility for accessibility */
-a:focus,
-.btn:focus,
-input:focus {
-  outline: 2px solid #0f7dc2;
-  outline-offset: 2px;
-}
-
-/* Responsive: Stack cards vertically on small screens */
+/* Responsive Timeline */
 @media (max-width: 1200px) {
   section {
     width: 100%;
@@ -141,8 +132,8 @@ input:focus {
   section {
     flex-direction: column;
     overflow-x: visible;
-    gap: 20px;
-    padding: 16px 8px; /* Add horizontal padding so cards don't touch the edge */
+    gap: 24px;
+    padding: 14px 4px;
     scroll-snap-type: none;
     width: 100%;
     max-width: 100%;
@@ -154,73 +145,143 @@ input:focus {
   }
 }
 
-/* --- Three Column Section Styles --- */
-/* This section is NOT affected by the timeline styles above */
+/* --- Three Column Section --- */
 .three-columns {
-  background: #e3f2fd; /* Slightly darker blue for better contrast */
-  padding: 40px 0 40px 0;
+  background: #eaf4fb;
+  padding: 48px 0 48px 0;
   width: 100%;
+  border-top: 2px solid #e0e7ef;
+  border-bottom: 2px solid #e0e7ef;
 }
 
-/* Style the icons in the headings */
 .three-columns .bi {
-  font-size: 1.5em;
+  font-size: 1.7em;
   vertical-align: middle;
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
-/* Improve heading color contrast in three-columns */
 .three-columns h2 {
-  color: #08325c; /* Match timeline year color for consistency and contrast */
+  color: #3fa7f3;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-/* Style the "Learn More" links with higher contrast */
 .learn-more-link {
   display: inline-block;
-  margin-top: 10px;
-  color: #08325c; /* Even darker blue for best contrast */
+  margin-top: 12px;
+  color: #3fa7f3;
   text-decoration: none;
-  font-weight: bold;
-  border-bottom: 2px solid #08325c;
+  font-weight: 700;
+  border-bottom: 2px solid #3fa7f3;
   padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.18s, border-color 0.18s;
 }
 .learn-more-link:hover,
 .learn-more-link:focus {
-  color: #041a2c;
-  border-bottom: 2px solid #041a2c;
+  color: #005495;
+  border-bottom: 2px solid #005495;
 }
 
 /* Responsive: Stack columns on small screens */
 @media (max-width: 768px) {
   .three-columns {
-    padding: 24px 0;
+    padding: 28px 0;
   }
 }
 
-/* Style the instruction text at the bottom */
-body > p {
-  text-align: center;
-  color: #08325c; /* Use dark blue for strong contrast */
-  font-weight: bold;
-  margin: 18px 0 28px 0;
+/* FAQ Accordion */
+.accordion-button {
+  background: #f7fafc;
+  color: #1a2733;
+  font-weight: 600;
+  border-radius: 0 !important;
+  border-bottom: 1.5px solid #e0e7ef;
+  transition: background 0.18s;
+}
+.accordion-button:focus {
+  box-shadow: 0 0 0 2px #3fa7f3;
+}
+.accordion-button:not(.collapsed) {
+  background: #eaf4fb;
+  color: #005495;
+}
+.accordion-body {
+  background: #f4f8fb;
+  color: #2b3d4f;
+  border-radius: 0;
+}
+
+/* Subscription Form */
+form .form-control {
+  border-radius: 0;
+  border: 1.5px solid #e0e7ef;
   font-size: 1.05rem;
+  padding: 10px 12px;
+  transition: border-color 0.18s;
+}
+form .form-control:focus {
+  border-color: #3fa7f3;
+  box-shadow: 0 0 0 2px #3fa7f3;
+}
+.btn-primary {
+  background: #3fa7f3;
+  border: none;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 10px 28px;
+  transition: background 0.18s;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #005495;
 }
 
-/* Footer link styles for better contrast */
+/* Footer */
 footer {
-  background: #f8fbff;
+  background: #f7fafc;
+  border-top: 2px solid #e0e7ef;
+  color: #1a2733;
+  font-size: 1rem;
+  letter-spacing: 0.1px;
 }
-
+footer p {
+  margin-bottom: 0.5rem;
+  color: #1a2733;
+  font-weight: 500;
+}
 footer a {
-  color: #08325c; /* Dark blue for high contrast */
+  color: #3fa7f3;
   text-decoration: underline;
-  font-weight: bold;
+  font-weight: 700;
+  transition: color 0.18s;
 }
-
 footer a:hover,
 footer a:focus {
-  color: #041a2c;
+  color: #005495;
   text-decoration: underline;
   outline: none;
+}
+
+/* Instruction Text */
+body > p {
+  text-align: center;
+  color: #005495;
+  font-weight: 700;
+  margin: 22px 0 32px 0;
+  font-size: 1.08rem;
+  letter-spacing: 0.2px;
+}
+
+/* Accessibility: Focus outlines */
+a:focus,
+.btn:focus,
+input:focus {
+  outline: 2px solid #3fa7f3;
+  outline-offset: 2px;
+}
+
+/* Box-sizing for all */
+* {
+  box-sizing: border-box;
 }
