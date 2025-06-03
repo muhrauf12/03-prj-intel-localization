@@ -175,7 +175,7 @@ section > div {
 
 /* Improve heading color contrast in three-columns */
 .three-columns h2 {
-  color: #08325c; /* Match timeline year color for consistency and contrast */
+  color: #afb8c1; /* Match timeline year color for consistency and contrast */
 }
 
 /* Style the "Learn More" links with higher contrast */
