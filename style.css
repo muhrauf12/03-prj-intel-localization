@@ -13,14 +13,14 @@ body {
 header {
   background-color: #005495; /* Darker Intel blue for better contrast */
   color: #fff;
-  padding: 37px 0 27px 0;
+  padding: 32px 0 24px 0;
   text-align: center;
 }
 
 /* Style the Intel logo */
 header img {
-  width: 140px;
-  margin-bottom: 13px;
+  width: 120px;
+  margin-bottom: 12px;
 }
 
 /* Main heading style */
@@ -33,120 +33,116 @@ header h1 {
 header p {
   font-size: 1.1rem;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 500px;
 }
-/* ------------------------------
-   Timeline Cards: Overlay Version
-------------------------------- */
 
-/* Ensure each card is the positioning context */
+/* Timeline section styles */
+section {
+  /* Use flexbox to arrange cards horizontally */
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto; /* Enable horizontal scroll */
+  gap: 16px; /* Space between cards */
+  padding: 24px 16px;
+  scroll-snap-type: x mandatory; /* Enable scroll snap */
+
+  /* Show exactly 4 cards at a time (4 * 280px + 3 * 16px gap = 1120px) */
+  width: 1180px;
+  max-width: 100%;
+  margin: 0 auto; /* Center the timeline on the page */
+}
+
+/* Each timeline card */
 section > div {
-  position: relative;
   background: white;
-  border-radius: 13px;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
   min-width: 260px;
   max-width: 280px;
-  flex: 0 0 auto;
-  padding: 0;
-  overflow: hidden;
-  scroll-snap-align: start;
-  transition: background 0.3s, box-shadow 0.2s;
+  flex: 0 0 auto; /* Prevent shrinking/growing */
+  padding: 18px 14px 18px 14px;
+  scroll-snap-align: start; /* Snap to start of card */
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
-/* On hover: card and overlay turn Intel blue, text turns white */
-section > div:hover,
-section > div:focus-within {
-  background: #005495;
+/* Card hover effect for interactivity */
+section > div:hover {
+  /* Slightly lift and highlight the card */
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(15, 125, 194, 0.18);
+  z-index: 1;
 }
 
-/* Move image into its own class so we can zero-out padding */
-section img {
-  display: block;
-  width: 100%;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-
-/* Style for the top text (year + title) inside each card */
-section h2,
-section h3 {
-  position: absolute;
-  left: 16px;
-  z-index: 2;
-  color: #08325c;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  margin: 0;
-  transition: color 0.3s;
-}
-
+/* Card headings */
 section h2 {
-  top: 12px;
+  color: #08325c; /* Much darker blue for strong contrast */
+  margin: 0 0 4px 0;
   font-size: 1.2rem;
-  font-weight: 600;
 }
 
 section h3 {
-  top: 36px;
+  margin: 0 0 8px 0;
   font-size: 1rem;
-  font-weight: 500;
   color: #222;
 }
 
-/* Make overlay always visible and transparent by default */
-.card-details {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Card images */
+section img {
   width: 100%;
-  height: 100%;
-  background-color: transparent;
-  color: #08325c; /* Intel blue text */
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-  transition: background 0.3s, color 0.3s;
-  text-align: center;
-  border-radius: 12px;
-  pointer-events: auto;
+  border-radius: 8px;
+  margin: 8px 0 10px 0;
 }
 
-/* Fade in the overlay on hover */
-section > div:hover .card-details,
-section > div:focus-within .card-details {
-  background-color: #005495;
-  color: #fff;
-}
-
-/* Style for the overlay paragraph */
-.card-details p {
-  font-size: 0.95rem;
-  line-height: 1.4;
+/* Card text */
+section p {
+  font-size: 0.98rem;
+  color: #333;
   margin: 0;
 }
 
-/* Remove old padding from the card’s container so the overlay sits flush */
-section > div > img {
-  margin-bottom: 0;
+/* Hide card details by default, show on hover */
+/* We use max-height and opacity for a smooth transition */
+.card-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
-/* Adjust the card’s bottom padding (so image is flush and overlay covers everything) */
-section > div {
-  padding-bottom: 0;
+/* When the card is hovered, show the details */
+section > div:hover .card-details {
+  max-height: 200px; /* Enough to show the text */
+  opacity: 1;
 }
 
-/* If you want a little “peek” of the image below the overlay, you can add: */
-/* section img { margin-bottom: 8px; }  but generally zero-out it so the overlay covers exactly. */
+/* Make sure padding and borders are included in width calculations */
+* {
+  box-sizing: border-box;
+}
 
-/* Keep responsive stacking unchanged */
+/* Improve focus visibility for accessibility */
+a:focus,
+.btn:focus,
+input:focus {
+  outline: 2px solid #0f7dc2;
+  outline-offset: 2px;
+}
+
+/* Responsive: Stack cards vertically on small screens */
+@media (max-width: 1200px) {
+  section {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 700px) {
   section {
     flex-direction: column;
     overflow-x: visible;
     gap: 20px;
-    padding: 16px 8px;
+    padding: 16px 8px; /* Add horizontal padding so cards don't touch the edge */
     scroll-snap-type: none;
     width: 100%;
     max-width: 100%;
@@ -175,7 +171,7 @@ section > div {
 
 /* Improve heading color contrast in three-columns */
 .three-columns h2 {
-  color: #afb8c1; /* Match timeline year color for consistency and contrast */
+  color: #08325c; /* Match timeline year color for consistency and contrast */
 }
 
 /* Style the "Learn More" links with higher contrast */
@@ -185,14 +181,14 @@ section > div {
   color: #08325c; /* Even darker blue for best contrast */
   text-decoration: none;
   font-weight: bold;
-  border-bottom: 2px solid #3c536b;
+  border-bottom: 2px solid #08325c;
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
 }
 .learn-more-link:hover,
 .learn-more-link:focus {
   color: #041a2c;
-  border-bottom: 2px solid #1d4260;
+  border-bottom: 2px solid #041a2c;
 }
 
 /* Responsive: Stack columns on small screens */
@@ -205,7 +201,7 @@ section > div {
 /* Style the instruction text at the bottom */
 body > p {
   text-align: center;
-  color: #5391cf; /* Use dark blue for strong contrast */
+  color: #08325c; /* Use dark blue for strong contrast */
   font-weight: bold;
   margin: 18px 0 28px 0;
   font-size: 1.05rem;
