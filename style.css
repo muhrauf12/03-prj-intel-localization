@@ -13,12 +13,12 @@ body {
 
 /* Header / Hero */
 header {
-  background: #1985be;
-  color: #2b68a1;
+  background: #0e86c7;
+  color: #1a81e1;
   padding: 56px 0 36px 0;
   text-align: center;
-  box-shadow: 0 4px 32px 0 rgba(71, 130, 160, 0.09);
-  border-bottom: 3px solid #4dc3ff;
+  box-shadow: 0 4px 32px 0 rgba(57, 133, 172, 0.09);
+  border-bottom: 3px solid #248dc2;
 }
 
 header img {
