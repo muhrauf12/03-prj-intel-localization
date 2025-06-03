@@ -1,34 +1,38 @@
 /* --------------------------------------------------
-   Base styles
+   Base / Reset
 -------------------------------------------------- */
-
-/* Intel-inspired background and font */
-body {
-  background-color: #eef6fc;
-  font-family: Arial, sans-serif;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Make sure padding and border are included in width/height */
-* {
-  box-sizing: border-box;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef6fc;
+  color: #222;
+  line-height: 1.5;
 }
 
 /* --------------------------------------------------
    Header / Hero
 -------------------------------------------------- */
 .bg-intel-blue {
-  background-color: #005395;
+  background-color: #0d3a71; /* A deeper Intel blue to match the screenshot */
 }
-.logo {
+
+.header-logo {
   width: 120px;
+  height: auto;
 }
-header h1 {
-  font-size: 2rem;
-  margin: 12px 0 8px 0;
+
+.header-title {
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
-header p {
+
+.header-subtitle {
   font-size: 1rem;
   max-width: 600px;
   margin: 0 auto;
@@ -43,18 +47,17 @@ header p {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 24px 16px;
-  width: 100%;
-  max-width: 100%;
+  /* No fixed width—lets it fill the viewport */
 }
 
 .timeline-card {
-  background: #fff;
-  border-radius: 10px;
+  background-color: #fff;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(15, 125, 194, 0.08);
-  flex: 0 0 280px;
+  flex: 0 0 280px; /* Each card is 280px wide */
   padding: 16px;
-  position: relative;
   scroll-snap-align: start;
+  position: relative;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -64,49 +67,56 @@ header p {
   z-index: 1;
 }
 
-.timeline-card h2 {
-  color: #08325c;
-  font-size: 1.2rem;
+.card-year {
+  color: #0d3a71;
+  font-size: 1.125rem;
+  font-weight: 600;
   margin-bottom: 4px;
 }
-.timeline-card h3 {
-  color: #222;
+
+.card-title {
   font-size: 1rem;
+  font-weight: 500;
   margin-bottom: 8px;
-}
-.timeline-card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-.timeline-card p {
-  font-size: 0.95rem;
-  color: #333;
-  margin: 0;
+  color: #222;
 }
 
-/* Hide details until hover */
+.card-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: block;
+}
+
 .card-details {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.3s ease, opacity 0.3s ease;
 }
+
 .timeline-card:hover .card-details {
-  max-height: 150px;
+  max-height: 140px;
   opacity: 1;
 }
 
-.instructions {
-  text-align: center;
-  color: #08325c;
-  font-weight: bold;
-  margin: 16px 0 24px 0;
-  font-size: 1rem;
+.card-details p {
+  font-size: 0.94rem;
+  color: #333;
+  margin-top: 8px;
 }
 
-/* Responsive: vertical stacking on small screens */
-@media (max-width: 700px) {
+/* Instruction text under timeline */
+.instructions {
+  text-align: center;
+  color: #0d3a71;
+  font-weight: 600;
+  margin: 12px 0 24px 0;
+  font-size: 0.975rem;
+}
+
+/* Stack cards vertically on narrow screens */
+@media (max-width: 768px) {
   .timeline-container {
     flex-direction: column;
     overflow-x: visible;
@@ -115,7 +125,8 @@ header p {
     scroll-snap-type: none;
   }
   .timeline-card {
-    flex: 0 0 100%;
+    flex: 0 0 auto;
+    width: 100%;
   }
 }
 
@@ -125,51 +136,70 @@ header p {
 .bg-light-blue {
   background-color: #e3f2fd;
 }
-.three-columns h2 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+
+.column-heading {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0d3a71;
 }
+
+.column-text {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 12px;
+}
+
 .learn-more-link {
-  display: inline-block;
-  margin-top: 8px;
-  color: #08325c;
-  font-weight: bold;
+  color: #0d3a71;
+  font-weight: 600;
   text-decoration: none;
-  border-bottom: 2px solid #08325c;
+  border-bottom: 2px solid #0d3a71;
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
 }
+
 .learn-more-link:hover,
 .learn-more-link:focus {
   color: #041a2c;
-  border-bottom-color: #041a2c;
+  border-color: #041a2c;
 }
+
 .bi {
   font-size: 1.5rem;
   vertical-align: middle;
-  margin-right: 6px;
+}
+
+/* Stack columns on very small screens */
+@media (max-width: 576px) {
+  .column-heading {
+    font-size: 1.25rem;
+  }
 }
 
 /* --------------------------------------------------
-   Accordion overrides (optional)
+   FAQ Accordion (Bootstrap overrides)
 -------------------------------------------------- */
 .accordion-button:focus {
   box-shadow: 0 0 0 0.25rem rgba(15, 125, 194, 0.5);
 }
 
 /* --------------------------------------------------
-   Form and Button Styles
+   Form / Buttons
 -------------------------------------------------- */
-form label {
-  font-weight: bold;
+.form-label {
+  font-weight: 600;
 }
+
 .btn-primary {
-  background-color: #005395;
+  background-color: #0d3a71;
   border: none;
+  font-weight: 600;
 }
+
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: #003f7f;
+  background-color: #041a2c;
 }
 
 /* --------------------------------------------------
@@ -178,14 +208,26 @@ form label {
 .bg-footer {
   background-color: #f8fbff;
 }
+
 .footer-link {
-  color: #08325c;
+  color: #0d3a71;
   text-decoration: underline;
-  font-weight: bold;
+  font-weight: 600;
 }
+
 .footer-link:hover,
 .footer-link:focus {
   color: #041a2c;
   text-decoration: underline;
   outline: none;
 }
+
+/* Accessibility: ensure focus states for all interactive elements */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #0f7dc2;
+  outline-offset: 2px;
+}
+
